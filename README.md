@@ -3,7 +3,7 @@
 </p>
 
 # PropScript
-PropScript is a small, interpreted programming language designed for scripting. I wrote it to facilitate the development of Terra Toy, my video game. It has a similar syntax to python and was written in ~2500 lines of code with 0 dependencies. Please note that this is merely a hobby project; It is lacking in many features, error messages are vague, and there are likely to be a number of yet undiscovered issues.
+PropScript is a small, interpreted programming language designed for scripting. I wrote it to facilitate the development of Terra Toy, my video game. It has a similar syntax to Python and was written in ~2500 lines of code with 0 dependencies. Please note that this is merely a hobby project; It is lacking in many features, error messages are vague, and there are likely to be a number of yet undiscovered issues.
 
 ## Features
 - Basic Arithmetic (int, float, vec2, vec3, vec4, quaternion)
