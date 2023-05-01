@@ -541,7 +541,7 @@ static PSnodeHandle _ps_parse_statement(PSast* ast, const std::vector<PStoken>& 
 			PSnode rightModeRight = ast->nodePool[rightMost->op.right];
 			while(rightModeRight.type == PSnode::OP && 
 			     _ps_precedence(newOp.op.type) < _ps_precedence(rightModeRight.op.type) && 
-			     !rightMost->op.inParens)
+			     !rightModeRight.op.inParens)
 			{
 				rightMost = &ast->nodePool[rightMost->op.right];
 				rightModeRight = ast->nodePool[rightMost->op.right];
