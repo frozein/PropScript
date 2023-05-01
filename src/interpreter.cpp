@@ -67,6 +67,7 @@ static PSdata _ps_quaternion(const std::vector<PSdata>& params, const PSnode& no
 
 static PSdata _ps_sqrt(const std::vector<PSdata>& params, const PSnode& node, void* userData);
 static PSdata _ps_pow (const std::vector<PSdata>& params, const PSnode& node, void* userData);
+static PSdata _ps_abs (const std::vector<PSdata>& params, const PSnode& node, void* userData);
 
 static PSdata _ps_sin (const std::vector<PSdata>& params, const PSnode& node, void* userData);
 static PSdata _ps_cos (const std::vector<PSdata>& params, const PSnode& node, void* userData);
@@ -91,6 +92,7 @@ const std::vector<PSfunctionSignature> PS_DEFAULT_LIB_FUNCTIONS = {
 	{"quaternion", _ps_quaternion},
 	{"sqrt"      , _ps_sqrt},
 	{"pow"       , _ps_pow},
+	{"abs"       , _ps_abs},
 	{"sin"       , _ps_sin},
 	{"cos"       , _ps_cos},
 	{"tan"       , _ps_tan},
@@ -1244,6 +1246,42 @@ static PSdata _ps_pow(const std::vector<PSdata>& params, const PSnode& node, voi
 	PSdata result;
 	result.type = PSdata::FLOAT;
 	result.floatVal = powf(base, exp);
+
+	return result;
+}
+
+static PSdata _ps_abs(const std::vector<PSdata>& params, const PSnode& node, void* userData)
+{
+	if(params.size() != 1)
+		_ps_error(PSruntimeError::INVALID_PARAMS, node);
+	
+	PSdata result;
+	result.type = params[0].type;
+
+	if(params[0].type == PSdata::INT)
+		result.intVal = abs(params[0].intVal);
+	else if(params[0].type == PSdata::FLOAT)
+		result.floatVal = fabsf(params[0].floatVal);
+	else if(params[0].type == PSdata::VEC2)
+	{
+		result.vec2Val.x = fabsf(params[0].vec2Val.x);
+		result.vec2Val.y = fabsf(params[0].vec2Val.y);
+	}
+	else if(params[0].type == PSdata::VEC3)
+	{
+		result.vec3Val.x = fabsf(params[0].vec3Val.x);
+		result.vec3Val.y = fabsf(params[0].vec3Val.y);
+		result.vec3Val.z = fabsf(params[0].vec3Val.z);
+	}
+	else if(params[0].type == PSdata::VEC4)
+	{
+		result.vec4Val.x = fabsf(params[0].vec4Val.x);
+		result.vec4Val.y = fabsf(params[0].vec4Val.y);
+		result.vec4Val.z = fabsf(params[0].vec4Val.z);
+		result.vec4Val.w = fabsf(params[0].vec4Val.w);
+	}
+	else
+		_ps_error(PSruntimeError::INVALID_PARAMS, node);
 
 	return result;
 }
