@@ -13,7 +13,7 @@ PropScript is a small, interpreted programming language designed for scripting. 
 - Support for adding functions & constants defined in C++
 - Saving and loading the abstract syntax tree to disk (similar to an object file)
 
-Overall, the syntax is mostly identifcal to that of python, with the one notable difference being that multi-line code blocks must be enclosed in curly braces, tabs and all other whitespace is completely ignored. Additionally, individual elements of vectors are accesed as arrays, not with a "." operator (such as ".x"). The first element of a vector is accesed as "myVector[0]", for example.
+Overall, the syntax is mostly identifcal to that of Python, with the one notable difference being that multi-line code blocks must be enclosed in curly braces, tabs and all other whitespace is completely ignored. Additionally, individual elements of vectors are accesed as arrays, not with a "." operator (such as ".x"). The first element of a vector is accesed as "myVector[0]", for example.
 
 ## Does NOT Support
 - While/Do-While Loops
